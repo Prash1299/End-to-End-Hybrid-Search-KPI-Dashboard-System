@@ -1,0 +1,46 @@
+[
+    {
+      "query": "transformers",
+      "expected_topic": "Transformers"
+    },
+    {
+      "query": "autonomous agents",
+      "expected_topic": "Agentic AI"
+    },
+    {
+      "query": "vector embeddings",
+      "expected_topic": "Vector Databases"
+    },
+    {
+      "query": "semantic retrieval",
+      "expected_topic": "Semantic Search"
+    },
+    {
+      "query": "container orchestration",
+      "expected_topic": "Cloud Computing"
+    },
+    {
+      "query": "retrieval augmented generation",
+      "expected_topic": "RAG Systems"
+    },
+    {
+      "query": "async python apis",
+      "expected_topic": "FastAPI"
+    },
+    {
+      "query": "Financial Technology",
+      "expected_topic": "Financial Technology"
+    },
+    {
+      "query": "Healthcare AI",
+      "expected_topic": "Healthcare AI"
+    },
+    {
+      "query": "Cybersecurity AI",
+      "expected_topic": "Cybersecurity"
+    },
+    {
+      "query": "async python apis",
+      "expected_topic": "FastAPI"
+    }
+  ]
