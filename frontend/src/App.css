@@ -1,8 +1,13 @@
+/* Aerial */
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111827;
-  color: white;
+  font-family: Inter, sans-serif;  
+  background: #f8fafc;
+  color: #0f172a;
+
+  /* background: #f1f5f9;
+  color: white; */
 }
 
 .container {
@@ -221,4 +226,31 @@ h1 {
 .evaluation-table td {
   padding: 12px 18px;
   text-align: center;
+}
+
+
+
+.page{
+  margin-left:240px;
+  padding:30px;
+
+  width:calc(100% - 240px);
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+
+  box-sizing:border-box;
+}
+
+
+html,
+body,
+#root{
+  width:100%;
+  overflow-x:hidden;
+}
+
+*{
+  box-sizing:border-box;
 }

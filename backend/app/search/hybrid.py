@@ -14,6 +14,7 @@ class HybridSearch:
         self.vector.build()
 
     def normalize_scores(self, scores):
+        
         min_score = min(scores)
         max_score = max(scores)
 
