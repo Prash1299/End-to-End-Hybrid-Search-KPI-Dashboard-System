@@ -9,9 +9,10 @@ import {
 import {
   PieChart,
   Pie,
-  Cell
+  Cell,
+  Tooltip,
+  ResponsiveContainer
  } from "recharts";
- import CountUp from "react-countup";
 
 import "../styles/dashboard.css";
 import "../styles/cards.css";
@@ -23,14 +24,23 @@ import LatencyChart from "../components/LatencyChart";
 function Dashboard() {
   const [metrics, setMetrics] = useState({
     total_searches: 0,
-    p50_latency: 0,
-    p95_latency: 0,
-    zero_results: 0,
+    p50_latency_ms: 0,
+    p95_latency_ms: 0,
+    zero_results_queries: 0,
   });
   
   const [requestVolume, setRequestVolume] = useState([]);
   const [topQueries, setTopQueries] = useState([]);
   const [zeroResultQueries, setZeroResultQueries] = useState([]);
+  // const successRate =
+  // metrics.total_searches > 0
+  //   ? (
+  //       (metrics.total_searches -
+  //         metrics.zero_results) /
+  //       metrics.total_searches
+  //     ) * 100
+  //   : 0;
+
 
   const loadDashboard = async () => {
     try {
@@ -47,6 +57,7 @@ function Dashboard() {
       const zeroData = await getZeroResults();
       setZeroResultQueries(zeroData);
 
+      
     } catch (error) {
       console.error("Dashboard API Error:", error);
     }
@@ -70,17 +81,19 @@ function Dashboard() {
     <div className="dashboard-container">
 
 <div className="hero-banner">
-   <div>
-      <h1>Hybrid Search Analytics</h1>
-      <p>
-         Monitor search performance,
-         latency and retrieval quality
-      </p>
-   </div>
+  <div>
+    <h1>Hybrid Search Analytics</h1>
+    <p>
+      Live monitoring of search quality,
+      latency and retrieval performance
+    </p>
+  </div>
 
-   <div className="hero-status">
-      🟢 System Healthy
-   </div>
+  <div className="hero-status">
+    🟢 {metrics.total_searches > 0
+      ? "System Healthy"
+      : "No Search Activity"}
+  </div>
 </div> 
 
       <div className="metrics-grid">
@@ -125,6 +138,30 @@ function Dashboard() {
           </div>
         </div>
 
+        
+
+{/* <div className="metric-icon">
+📊
+</div>
+
+<div>
+
+<h4>Search Activity</h4>
+
+<h2>
+
+{metrics.total_searches > 100
+ ? "High"
+ : metrics.total_searches > 20
+ ? "Medium"
+ : "Low"}
+
+</h2>
+
+</div> */}
+
+
+
       </div>
 
 
@@ -134,7 +171,7 @@ function Dashboard() {
       <TopQueries data={topQueries} />
         <LatencyChart />
       </div>
-
+{/* 
       <div className="zero-chart-card">
 
 <h2>Search Success Rate</h2>
@@ -154,7 +191,8 @@ function Dashboard() {
    </Pie>
 </PieChart>
 
-</div>
+</div> */}
+
 
     </div>
   );
