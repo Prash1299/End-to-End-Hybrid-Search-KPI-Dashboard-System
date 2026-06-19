@@ -241,3 +241,128 @@ tbody tr {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+
+
+
+
+
+.hero-banner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:30px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color:white;
+
+  margin-bottom:30px;
+}
+
+.hero-banner h1{
+  margin:0;
+  font-size:2.3rem;
+}
+
+.hero-banner p{
+  margin-top:10px;
+  opacity:.9;
+}
+
+.hero-badge{
+  display:flex;
+  flex-direction:column;
+
+  gap:8px;
+
+  padding:16px 24px;
+
+  border-radius:16px;
+
+  background:
+  rgba(255,255,255,.15);
+
+  backdrop-filter:blur(10px);
+
+  font-weight:600;
+}
+
+.hero-badge span{
+  font-size:1.6rem;
+}
+
+.kpi-card{
+  transition:.3s ease;
+}
+
+.kpi-card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+  0 20px 40px rgba(
+    0,
+    0,
+    0,
+    .12
+  );
+}
+
+.winner-card{
+  border:2px solid #f59e0b;
+
+  box-shadow:
+  0 10px 30px rgba(
+    245,
+    158,
+    11,
+    .25
+  );
+}
+
+.metric-pill{
+  padding:6px 12px;
+
+  border-radius:999px;
+
+  font-weight:600;
+}
+
+.green{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.blue{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.purple{
+  background:#ede9fe;
+  color:#7c3aed;
+}
+
+.orange{
+  background:#fed7aa;
+  color:#ea580c;
+}
+
+tbody tr:hover{
+  background:#f8fafc;
+
+  transform:scale(1.01);
+
+  transition:.2s;
+}

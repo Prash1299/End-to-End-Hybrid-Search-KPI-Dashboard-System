@@ -1,14 +1,47 @@
 import { useState } from "react";
-import axios from "axios";
+
 import "../styles/search.css";
 
+import axios from "axios";
+
+
+
 function Search() {
+  const submitFeedback = async (
+    query,
+    docId,
+    relevance
+  ) => {
+    try {
+      await axios.post(
+        "http://localhost:8000/feedback",
+        {
+          query,
+          doc_id: docId,
+          relevance
+        }
+      );
+  
+      setFeedbackMessage(
+        "Feedback submitted successfully"
+      );
+  
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
+  
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [latency, setLatency] = useState(null);
   const [loading, setLoading] = useState(false);
   const [alpha, setAlpha] = useState(0.5);
   const [topK, setTopK] = useState(5);
+  const [feedbackMessage, setFeedbackMessage] =
+  useState("");
 
   const handleSearch = async () => {
     try {
@@ -57,10 +90,28 @@ function Search() {
   return (
     <div className="search-page">
 
+<div className="search-hero">
+  <div>
+    <h1>AI Search Workspace</h1>
+    <p>
+      Hybrid Retrieval powered by BM25 + FAISS + Sentence Transformers
+    </p>
+  </div>
+
+  <div className="hero-status">
+    🟢 Search Engine Active
+  </div>
+</div>
+
       <div className="search-content">
 
       <div className="search-header">
-        <h1>Search</h1>
+        
+        {feedbackMessage && (
+  <div className="feedback-toast">
+    {feedbackMessage}
+  </div>
+)}
 
         <div className="search-box">
 
@@ -167,10 +218,18 @@ Top K:
 </div>
 
       <div className="results-container">
-        {results.map((result) => (
-          <div key={result.doc_id} className="result-card">
+        {results.map((result,index) => (
+          <div key={result.doc_id} className="result-card">   
+
+<div className="result-rank">
+  #{index + 1}
+</div>
 
             <h3>{result.title}</h3>
+
+            <div className="retrieval-badge">
+  Hybrid Retrieval
+</div>
 
             <p className="doc-id">
               Doc ID: {result.doc_id}
@@ -230,6 +289,36 @@ Top K:
   <span>
     {result.vector_score.toFixed(3)}
   </span>
+
+</div>
+
+<div className="feedback-actions">
+
+  <button
+    className="relevant-btn"
+    onClick={() =>
+      submitFeedback(
+        query,
+        result.doc_id,
+        "relevant"
+      )
+    }
+  >
+    👍 Relevant
+  </button>
+
+  <button
+    className="not-relevant-btn"
+    onClick={() =>
+      submitFeedback(
+        query,
+        result.doc_id,
+        "not_relevant"
+      )
+    }
+  >
+    👎 Not Relevant
+  </button>
 
 </div>
 

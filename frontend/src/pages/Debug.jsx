@@ -80,6 +80,15 @@ const [stats, setStats] = useState({
   critical: 0
 });
 
+// const [timeRange, setTimeRange] =
+//   useState("1h");
+//   <select
+//  value={timeRange}
+//  onChange={(e) =>
+//    setTimeRange(e.target.value)
+//  }
+// ></select>
+
 const [severityData, setSeverityData] =
   useState([]);
 
@@ -152,8 +161,32 @@ const COLORS = [
   });
 
   return (
+
+    
     <div className="debug-page">
-      <h1 className="debug-title">Debug Dashboard</h1>
+      
+
+      <div className="debug-hero">
+
+<div>
+
+<h1>System Monitoring Center</h1>
+
+<p>
+Track failures,
+warnings,
+logs and runtime issues
+</p>
+
+</div>
+
+<div className="incident-badge">
+
+🟢 Healthy
+
+</div>
+
+</div>
 
       {/* KPI CARDS */}
 
